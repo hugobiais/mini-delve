@@ -24,49 +24,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCard } from "./checks/CheckCard";
-
-interface Check {
-  id: number;
-  user_id: string;
-  organization_id: number;
-  check_type: string;
-  status: string;
-  logs: {
-    execution_logs: {
-      message: string;
-      timestamp: string;
-      data: any;
-    }[];
-    projects_summary?: {
-      total_projects: number;
-      projects_with_disabled_rls: number;
-      project_details: any[];
-    };
-  };
-  recommendations?: {
-    suggestion: string;
-    affected_elements: Array<
-      | { type: "user"; email: string }
-      | {
-          type: "table";
-          project_name: string;
-          table_name: string;
-          project_id: string;
-        }
-      | { type: "project"; project_name: string; project_id: string }
-    >;
-    action_links: Array<{
-      url: string;
-      label: string;
-      project_name?: string;
-    }>;
-  };
-  created_at: string;
-}
-
-interface CheckHistoryProps {
-  organizationId: number | null;
-}
+import { Check, CheckHistoryProps } from "@/app/types/checks";
 
 export function CheckHistory({ organizationId }: CheckHistoryProps) {
   const supabase = createClient();

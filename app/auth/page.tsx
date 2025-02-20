@@ -36,13 +36,7 @@ export default function AuthPage() {
         },
       });
 
-      if (error) {
-        toast({
-          variant: "destructive",
-          title: "Error",
-          description: error.message,
-        });
-      } else {
+      if (!error) {
         toast({
           title: "Check your email",
           description: "We've sent you a magic link to sign in.",
@@ -52,7 +46,7 @@ export default function AuthPage() {
       toast({
         variant: "destructive",
         title: "Error",
-        description: "An unexpected error occurred. Please try again.",
+        description: error.message || "An unexpected error occurred.",
       });
     } finally {
       setIsLoading(false);
