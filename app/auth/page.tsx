@@ -32,7 +32,7 @@ export default function AuthPage() {
           emailRedirectTo:
             process.env.NODE_ENV === "development"
               ? "http://localhost:3000/"
-              : "https://mini-delve.vercel.app/",
+              : "https://mini-delve-omega.vercel.app/",
         },
       });
 
