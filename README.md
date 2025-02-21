@@ -2,6 +2,10 @@
 
 mini-delve is a lightweight security compliance checker for Supabase projects—an inspiration drawn from [Delve](https://www.delve.co/). It automatically scans your Supabase configuration for common security best practices and logs detailed evidence of compliance or failures. The tool runs automated checks for Multi-Factor Authentication (MFA), Row Level Security (RLS), and Point-in-Time Recovery (PITR).
 
+## Testing the project
+
+To test the project, I recommend signing up with whatever email (doesn't really matter). After that, you can connect either a brand new Supabase organization (create a quick table in a new project to test the RLS check) or use your own. The checks won't work on projects that are INACTIVE.
+
 ## Features
 
 ### User Authentication & Organization Connection
