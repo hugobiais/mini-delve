@@ -24,22 +24,16 @@ export default function AuthPage() {
     e.preventDefault();
     setIsLoading(true);
 
-    console.log(
-      "emailRedirectTo",
-      process.env.NODE_ENV === "development"
-        ? `${process.env.NEXT_PUBLIC_SUPABASE_PATH_DEV}`
-        : `${process.env.NEXT_PUBLIC_SUPABASE_PATH_PROD}`
-    );
-
     try {
       const { error } = await supabase.auth.signInWithOtp({
         email: email,
         options: {
           shouldCreateUser: true,
-          emailRedirectTo:
-            process.env.NODE_ENV === "development"
-              ? `${process.env.NEXT_PUBLIC_SUPABASE_PATH_DEV}`
-              : `${process.env.NEXT_PUBLIC_SUPABASE_PATH_PROD}`,
+          // emailRedirectTo doesn't seem to work, need to change site URL on Supabase
+          // emailRedirectTo:
+          //   process.env.NODE_ENV === "development"
+          //     ? `${process.env.NEXT_PUBLIC_SUPABASE_PATH_DEV}`
+          //     : `${process.env.NEXT_PUBLIC_SUPABASE_PATH_PROD}`,
         },
       });
 

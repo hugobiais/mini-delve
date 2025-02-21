@@ -4,7 +4,7 @@ mini-delve is a lightweight security compliance checker for Supabase projects—
 
 ## Testing the project
 
-To test the project, I recommend signing up with whatever email (doesn't really matter). After that, you can connect either a brand new Supabase organization (create a quick table in a new project to test the RLS check) or use your own. The checks won't work on projects that are INACTIVE.
+To test the project, go to [mini-delve-omega.vercel.app](https://mini-delve-omega.vercel.app/). I recommend signing up with whatever email (doesn't really matter). After that, you can connect either a brand new Supabase organization (create a quick table in a new project to test the RLS check) or use your own. The checks won't work on projects that are INACTIVE.
 
 ## Features
 
