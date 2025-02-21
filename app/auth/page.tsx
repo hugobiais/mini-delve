@@ -24,6 +24,13 @@ export default function AuthPage() {
     e.preventDefault();
     setIsLoading(true);
 
+    console.log(
+      "emailRedirectTo",
+      process.env.NODE_ENV === "development"
+        ? `${process.env.NEXT_PUBLIC_SUPABASE_PATH_DEV}`
+        : `${process.env.NEXT_PUBLIC_SUPABASE_PATH_PROD}`
+    );
+
     try {
       const { error } = await supabase.auth.signInWithOtp({
         email: email,
@@ -31,8 +38,8 @@ export default function AuthPage() {
           shouldCreateUser: true,
           emailRedirectTo:
             process.env.NODE_ENV === "development"
-              ? "http://localhost:3000/"
-              : "https://mini-delve-omega.vercel.app/",
+              ? `${process.env.NEXT_PUBLIC_SUPABASE_PATH_DEV}`
+              : `${process.env.NEXT_PUBLIC_SUPABASE_PATH_PROD}`,
         },
       });
 

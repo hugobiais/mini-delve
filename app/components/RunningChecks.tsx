@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,46 +13,7 @@ import { Separator } from "@/components/ui/separator";
 import { Shield, Key, Database, Loader2, ScanLine } from "lucide-react";
 import { Accordion } from "@/components/ui/accordion";
 import { CheckCard } from "./checks/CheckCard";
-
-interface Check {
-  id: number;
-  user_id: string;
-  organization_id: number;
-  check_type: string;
-  status: string;
-  logs: {
-    execution_logs: {
-      message: string;
-      timestamp: string;
-      level: string;
-      data: Record<string, unknown>;
-    }[];
-    summary: {
-      total_items: number;
-      items_with_issues: number;
-      status: string;
-      details: Record<string, unknown>;
-    };
-  };
-  recommendations?: {
-    suggestion: string;
-    affected_elements: Array<
-      | { type: "user"; email: string }
-      | {
-          type: "table";
-          project_name: string;
-          table_name: string;
-          project_id: string;
-        }
-      | { type: "project"; project_name: string; project_id: string }
-    >;
-    action_links: Array<{
-      url: string;
-      label: string;
-      project_name?: string;
-    }>;
-  };
-}
+import { Check } from "@/app/types/checks";
 
 interface RunningChecksProps {
   selectedOrg: { id: string; supabase_org_id: string } | null;
@@ -66,6 +27,11 @@ export function RunningChecks({ selectedOrg }: RunningChecksProps) {
     checks: { mfa?: Check; rls?: Check; pitr?: Check };
     overall_status: string;
   } | null>(null);
+
+  useEffect(() => {
+    setCheckData(null);
+    setFullScanResults(null);
+  }, [selectedOrg]);
 
   const runCheck = async ({
     check,
