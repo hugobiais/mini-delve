@@ -92,8 +92,8 @@ export default function OrganizationManager({
     const clientId = process.env.NEXT_PUBLIC_SUPABASE_CLIENT_ID;
     const redirectUri =
       process.env.NODE_ENV === "development"
-        ? process.env.NEXT_PUBLIC_SUPABASE_REDIRECT_URI_DEV
-        : process.env.NEXT_PUBLIC_SUPABASE_REDIRECT_URI_PROD;
+        ? `${process.env.NEXT_PUBLIC_SUPABASE_PATH_DEV}/api/auth/supabase-oauth-callback`
+        : `${process.env.NEXT_PUBLIC_SUPABASE_PATH_PROD}/api/auth/supabase-oauth-callback`;
 
     if (!redirectUri) {
       throw new Error("Redirect URI is not configured");
