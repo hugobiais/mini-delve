@@ -102,7 +102,7 @@ export default function OrganizationManager({
     const authUrl =
       `https://api.supabase.com/v1/oauth/authorize?` +
       `client_id=${clientId}&` +
-      `redirect_uri=${encodeURIComponent(redirectUri)}&` +
+      `redirect_uri=${redirectUri}&` +
       `response_type=code&` +
       `state=${state}`;
 
